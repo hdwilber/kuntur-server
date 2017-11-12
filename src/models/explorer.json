@@ -1,0 +1,54 @@
+{
+  "name": "Explorer",
+  "base": "User",
+  "inheritAcls": false,
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "ExplorerAccessToken",
+      "polymorphic": {
+        "foreignKey": "explorerId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
+      }
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "ExplorerIdentity",
+      "foreignKey": "explorerId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "ExplorerCredential",
+      "foreignKey": "explorerId"
+    },
+    "records": {
+      "type": "hasMany",
+      "model": "Record",
+      "foreignKey": "explorerId"
+    }
+  },
+  "validations": [],
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    }
+  ],
+  "methods": []
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ExplorerAccessToken",
+  "base": "AccessToken",
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "explorer": {
+      "type": "belongsTo",
+      "idName": "id",
+      "polymorphic": {
+        "idType": "string",
+        "foreignKey": "explorerId",
+        "discriminator": "principalType"
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

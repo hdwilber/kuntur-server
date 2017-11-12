@@ -1,0 +1,57 @@
+{
+  "name": "MediaFile",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "targetName": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date",
+      "required": true
+    },
+    "updated": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "explorer": {
+      "type": "belongsTo",
+      "model": "Explorer",
+      "foreignKey": "explorerId"
+    },
+    "mediable": {
+      "type": "belongsTo",
+      "polymorphic": {
+        "foreignKey": "mediableId",
+        "discriminator": "mediableType"
+      }
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "kuntur",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "DEBUG=loopback:boot:* NODE_ENV=development  nodemon --exec npm run build:dev",
+    "build:dev": "babel-node src/index.js",
+
+    "build:prod": "babel src -d build --copy-files",
+    "run:prod": "NODE_ENV=production node build/index.js",
+    "start:prod": "NODE_ENV=production npm run build:prod && npm run run:prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.0",
+    "consolidate": "^0.14.5",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "exif": "^0.6.0",
+    "geolib": "^2.0.23",
+    "gm": "^1.23.0",
+    "helmet": "^3.8.1",
+    "loopback": "^3.16.2",
+    "loopback-boot": "^2.27.0",
+    "loopback-component-explorer": "^5.2.0",
+    "loopback-component-passport": "^3.4.1",
+    "loopback-component-storage": "^3.3.1",
+    "loopback-connector-mongodb": "^3.3.0",
+    "mmmagic": "^0.4.5",
+    "nodemon": "^1.12.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "babel-plugin-transform-export-default": "^7.0.0-alpha.20",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
