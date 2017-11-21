@@ -1,7 +1,11 @@
 {
   "name": "ExplorerIdentity",
   "base": "UserIdentity",
-  "properties": {},
+  "properties": {
+    "created": "Date",
+    "updated": "Date",
+    "displayName": "string"
+  },
   "validations": [],
   "relations": {
     "explorer": {

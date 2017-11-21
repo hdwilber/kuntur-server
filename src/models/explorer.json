@@ -2,6 +2,12 @@
   "name": "Explorer",
   "base": "User",
   "inheritAcls": false,
+  "properties": {
+    "verificationToken": "string",
+    "verifiedEmail": "boolean",
+    "created": "Date",
+    "updated": "Date"
+  },
   "relations": {
     "accessTokens": {
       "type": "hasMany",
@@ -35,7 +41,7 @@
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "ALLOW"
     },
     {
       "principalType": "ROLE",
@@ -50,5 +56,6 @@
       "property": "find"
     }
   ],
-  "methods": []
+  "methods": [
+  ]
 }
