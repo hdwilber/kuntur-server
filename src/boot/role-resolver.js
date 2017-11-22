@@ -1,10 +1,6 @@
 export default function (app) {
   const Role = app.models.Role
 
-  //Role.registerResolver('$everyone', (role, context, cb) =>  {
-    //return process.nextTick(() => cb(null, true))
-  //})
-
   // Rewriting default principal roles due to extending AccessToken
   Role.registerResolver('$authenticated', (role, context, cb) => {
     const { accessToken } = context

@@ -26,7 +26,6 @@ export const storage_container = {
   root: STORAGE_FOLDER_ROOT
 }
 
-console.log('Inside datasources')
 export default {
   mongodb: mongodb,
   storage_container: storage_container
