@@ -18,6 +18,8 @@ export default function (Explorer) {
           context.instance.verificationToken = buf.toString('hex')
           context.instance.verifiedEmail = false
           next()
+        } else {
+          next(new Error('something went wrong'))
         }
       });
     } else {
@@ -29,9 +31,9 @@ export default function (Explorer) {
     next()
     if (context.isNewInstance) {
       Mailer.send({
-        recipientEmail: 'hd.wilber@gmail.com',
+        recipientEmail: context.instance.email,
         token: context.instance.verificationToken,
-        verificationUrl: `localhost/Explorers/confirm?uid=${context.instance.id}&token=${context.instance.verificationToken}`
+        verificationUrl: `http:\/\/localhost:3001/api/Explorers/confirm?uid=${context.instance.id}&token=${context.instance.verificationToken}`
       })
       .then (res => {
         next()
@@ -58,7 +60,7 @@ export default function (Explorer) {
             }
           })
         } else {
-          next(new Error('Something went wrong'))
+          next(new Error('This token has been already used'))
         }
       } else {
         next(error)
