@@ -6,11 +6,14 @@ export default function (Record) {
 
   Record.observe ('before save', (context, next) => {
     const now = Date.now();
-    context.instance.updated = now
     if (context.isNewInstance) {
       const { accessToken } = context.options
       context.instance.created = now
+      context.instance.updated = now
       context.instance.explorerId = accessToken.explorerId
+    } else {
+      delete context.data.id
+      context.data.updated = now
     }
     next()
   })
